@@ -13,12 +13,19 @@
       <div id="current-date">----年--月--日</div>
     </header>
 
+    <h1 class="page-title">アラーム</h1>
+
     <section class="add-alarm">
-      <input type="time" id="alarm-time-input" aria-label="アラーム時刻">
-      <input type="text" id="alarm-label-input" placeholder="ラベル(任意)" maxlength="20">
+      <div class="add-alarm-row">
+        <input type="time" id="alarm-time-input" aria-label="アラーム時刻">
+      </div>
+      <div class="add-alarm-row">
+        <input type="text" id="alarm-label-input" placeholder="ラベル(任意)" maxlength="20">
+      </div>
       <button id="add-alarm-btn">追加</button>
     </section>
 
+    <p class="section-header">マイアラーム</p>
     <section class="alarm-list-section">
       <ul id="alarm-list"></ul>
       <p id="empty-message">アラームがまだありません</p>
@@ -30,7 +37,9 @@
       <div class="ringing-icon">⏰</div>
       <div id="ringing-label">アラーム</div>
       <div id="ringing-time"></div>
-      <button id="stop-alarm-btn">停止</button>
+      <div class="ringing-actions">
+        <button id="stop-alarm-btn">停止</button>
+      </div>
     </div>
   </div>
 

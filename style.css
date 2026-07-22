@@ -1,60 +1,60 @@
 :root {
-  --bg: #f4f5f7;
+  --bg: #f2f2f7;
   --card-bg: #ffffff;
-  --text: #1a1a1a;
-  --sub-text: #6b7280;
-  --accent: #4f46e5;
-  --accent-off: #d1d5db;
-  --danger: #ef4444;
-  --border: #e5e7eb;
+  --text: #000000;
+  --sub-text: #8e8e93;
+  --accent: #007aff;
+  --toggle-on: #34c759;
+  --toggle-off: #e9e9ea;
+  --danger: #ff3b30;
+  --separator: rgba(60, 60, 67, 0.29);
+  --input-bg: #f2f2f7;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121212;
-    --card-bg: #1e1e1e;
-    --text: #f5f5f5;
-    --sub-text: #9ca3af;
-    --accent: #818cf8;
-    --accent-off: #3f3f46;
-    --danger: #f87171;
-    --border: #2d2d2d;
+    --bg: #000000;
+    --card-bg: #1c1c1e;
+    --text: #ffffff;
+    --sub-text: #8e8e93;
+    --accent: #0a84ff;
+    --toggle-on: #30d158;
+    --toggle-off: #39393d;
+    --danger: #ff453a;
+    --separator: rgba(84, 84, 88, 0.6);
+    --input-bg: #2c2c2e;
   }
 }
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Segoe UI", sans-serif;
-  padding: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Segoe UI", sans-serif;
+  padding: 24px 16px 60px;
 }
 
 .app {
   width: 100%;
-  max-width: 420px;
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 28px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  max-width: 430px;
 }
 
 .clock {
   text-align: center;
-  margin-bottom: 28px;
+  margin: 12px 0 28px;
 }
 
 #current-time {
-  font-size: 3rem;
-  font-weight: 600;
+  font-size: 3.4rem;
+  font-weight: 200;
   letter-spacing: 1px;
   font-variant-numeric: tabular-nums;
 }
@@ -62,47 +62,79 @@ body {
 #current-date {
   color: var(--sub-text);
   font-size: 0.95rem;
-  margin-top: 4px;
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.page-title {
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 4px 12px;
+}
+
+.section-header {
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--sub-text);
+  margin: 20px 4px 6px;
 }
 
 .add-alarm {
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.add-alarm-row {
+  padding: 4px 16px;
+  border-bottom: 1px solid var(--separator);
   display: flex;
-  gap: 8px;
-  margin-bottom: 24px;
+  align-items: center;
+  min-height: 44px;
 }
 
-.add-alarm input[type="time"] {
-  flex: 1;
-  min-width: 0;
-}
-
-.add-alarm input[type="text"] {
-  flex: 1;
-  min-width: 0;
+.add-alarm-row:last-of-type {
+  border-bottom: none;
 }
 
 .add-alarm input {
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--bg);
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
   color: var(--text);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  padding: 8px 0;
+  font-family: inherit;
+}
+
+.add-alarm input:focus {
+  outline: none;
+}
+
+.add-alarm input::placeholder {
+  color: var(--sub-text);
 }
 
 .add-alarm button {
-  padding: 10px 18px;
+  display: block;
+  width: 100%;
+  padding: 14px;
   border: none;
-  border-radius: 10px;
-  background: var(--accent);
-  color: #fff;
+  border-top: 1px solid var(--separator);
+  background: transparent;
+  color: var(--accent);
   font-weight: 600;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-family: inherit;
 }
 
-.add-alarm button:hover {
-  opacity: 0.9;
+.add-alarm button:active {
+  background: var(--input-bg);
 }
 
 .alarm-list-section {
@@ -113,24 +145,26 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  background: var(--card-bg);
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 .alarm-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
-  border-radius: 14px;
-  background: var(--bg);
-  border: 1px solid var(--border);
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--separator);
+}
+
+.alarm-item:last-child {
+  border-bottom: none;
 }
 
 .alarm-item.disabled .alarm-time,
 .alarm-item.disabled .alarm-label {
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 .alarm-info {
@@ -140,30 +174,32 @@ body {
 }
 
 .alarm-time {
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 2.1rem;
+  font-weight: 300;
   font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
 }
 
 .alarm-label {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--sub-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: -2px;
 }
 
 .alarm-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .toggle-switch {
   position: relative;
-  width: 44px;
-  height: 26px;
+  width: 51px;
+  height: 31px;
   flex-shrink: 0;
 }
 
@@ -176,7 +212,7 @@ body {
 .toggle-slider {
   position: absolute;
   inset: 0;
-  background: var(--accent-off);
+  background: var(--toggle-off);
   border-radius: 999px;
   cursor: pointer;
   transition: background 0.2s;
@@ -185,34 +221,41 @@ body {
 .toggle-slider::before {
   content: "";
   position: absolute;
-  width: 20px;
-  height: 20px;
-  left: 3px;
-  top: 3px;
+  width: 27px;
+  height: 27px;
+  left: 2px;
+  top: 2px;
   background: #fff;
   border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(0, 0, 0, 0.16);
   transition: transform 0.2s;
 }
 
 .toggle-switch input:checked + .toggle-slider {
-  background: var(--accent);
+  background: var(--toggle-on);
 }
 
 .toggle-switch input:checked + .toggle-slider::before {
-  transform: translateX(18px);
+  transform: translateX(20px);
 }
 
 .delete-btn {
   border: none;
-  background: transparent;
+  background: var(--input-bg);
   color: var(--sub-text);
-  font-size: 1.1rem;
+  font-size: 0.85rem;
   cursor: pointer;
-  padding: 4px 6px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.delete-btn:hover {
+.delete-btn:active {
   color: var(--danger);
 }
 
@@ -227,10 +270,15 @@ body {
   display: none;
 }
 
+#alarm-list:empty {
+  display: none;
+}
+
 #ringing-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(10, 10, 12, 0.92);
+  backdrop-filter: blur(20px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -242,41 +290,47 @@ body {
 }
 
 .ringing-box {
-  background: var(--card-bg);
-  border-radius: 24px;
-  padding: 40px;
   text-align: center;
   width: 90%;
   max-width: 320px;
-  animation: pulse 1s infinite;
+  color: #fff;
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
 .ringing-icon {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
+  filter: grayscale(1) brightness(2);
 }
 
 #ringing-label {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-top: 8px;
+  margin-top: 12px;
 }
 
 #ringing-time {
-  color: var(--sub-text);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 4px;
-  font-size: 1rem;
+  font-size: 3rem;
+  font-weight: 200;
+  font-variant-numeric: tabular-nums;
+}
+
+.ringing-actions {
+  margin-top: 40px;
 }
 
 #stop-alarm-btn {
-  margin-top: 24px;
-  padding: 12px 32px;
+  padding: 16px 48px;
   border: none;
   border-radius: 999px;
   background: var(--danger);
   color: #fff;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   cursor: pointer;
+  font-family: inherit;
+  animation: none;
 }
 
 @keyframes pulse {
