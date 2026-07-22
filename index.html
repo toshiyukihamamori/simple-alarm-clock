@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Alarm Clock</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="clock">
+      <div id="current-time">--:--:--</div>
+      <div id="current-date">----年--月--日</div>
+    </header>
+
+    <section class="add-alarm">
+      <input type="time" id="alarm-time-input" aria-label="アラーム時刻">
+      <input type="text" id="alarm-label-input" placeholder="ラベル(任意)" maxlength="20">
+      <button id="add-alarm-btn">追加</button>
+    </section>
+
+    <section class="alarm-list-section">
+      <ul id="alarm-list"></ul>
+      <p id="empty-message">アラームがまだありません</p>
+    </section>
+  </div>
+
+  <div id="ringing-overlay" class="hidden">
+    <div class="ringing-box">
+      <div class="ringing-icon">⏰</div>
+      <div id="ringing-label">アラーム</div>
+      <div id="ringing-time"></div>
+      <button id="stop-alarm-btn">停止</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
